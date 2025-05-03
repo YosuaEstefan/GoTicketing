@@ -1,45 +1,103 @@
-var readmeContent = `
-# Ticketing System API
+# Go Ticketing API
 
-This repository contains a RESTful API for event ticketing built with Go (Golang), Gin, GORM, MySQL, and JWT authentication, following a clean architecture structure.
+GoTicketing is a robust, scalable RESTful API built with Go (Golang), Gin, GORM, MySQL, and JWT authentication. Designed for mid-to-large scale ticketing across industries — from entertainment and transportation to corporate services — it offers secure user management, role-based access control, event orchestration, ticketing workflows, and comprehensive reporting.This repository contains a RESTful API for event ticketing built with Go (Golang), Gin, GORM, MySQL, and JWT authentication, following a clean architecture structure.
 
-## Base URL
+---
 
-All endpoints are prefixed with:
+## 🚀 Technology Stack
 
-\`\`\`
-http://localhost:8080/api
-\`\`\`
+- **Backend:** Gin (Go)
+- **ORM:** GORM
+- **Database:** MySQL
+- **Authentication:** JWT
+- **Containerization:** Docker & Docker Compose
+- **Go Version:** 1.20+
 
-## Setup
+---
 
-1. **Clone the repository**
+## ✨ Features
 
-   \`\`\`bash
-   git clone https://github.com/yourusername/ticketing-api.git
-   cd ticketing-api
-   \`\`\`
+- **User Management:**
+  - Registration, login, and role-based access control (Admin, Customer).
+- **Event Management:**
+  - CRUD operations on Event.
+- **Ticket Management:**
+  - CRUD operations on Ticket.
+- **Reports and Analytics:**
+  - Summary Revenue report by event or time period.
+---
 
-2. **Environment Variables** Create a \`.env\` file in the root directory with the following:
+## 📁 Project Structure
 
-   \`\`\`ini
-   DB_HOST=localhost
-   DB_PORT=3306
-   DB_USER=root
-   DB_PASSWORD=password
-   DB_NAME=ticketing
-   SERVER_ADDRESS=:8080
-   JWT_SECRET=your-secret-key
-   JWT_EXPIRATION_HOURS=24
-   \`\`\`
+```
+go-ticketing/
+├── config/
+│   ├── config.go
+│   └── database.go
+├── controllers/
+│   ├── event_controller.go
+│   ├── report_controller.go
+│   ├── ticket_controller.go
+│   └── user_controller.go
+├── middleware/
+│   ├── cors.go
+│   ├── jwt_auth.go
+│   └── rbac.go
+├── models/
+│   ├── event.go
+│   ├── ticket.go
+│   └── user.go
+├── repository/
+│   ├── event_repository.go
+│   ├── ticket_repository.go
+│   └── user_repository.go
+├── routers/
+│   └── router.go
+├── service/
+│   ├── event_service.go
+│   ├── jwt_service.go
+│   ├── report_service.go
+│   ├── ticket_service.go
+│   └── user_service.go
+├── utils/
+│   └── jwt_util.go
+├── .env
+├── .gitignore
+├── README.md
+├── go.mod
+└── go.sum
+```
 
-3. **Database** Make sure MySQL is running and a database named \`ticketing\` exists. The application will auto-migrate tables on startup.
+---
 
-4. **Run the server**
+## 🗄️ Database Schema
 
-   \`\`\`bash
-   go run main.go
-   \`\`\`
+- **One-to-Many:**
+  - `Users → Ticket` 
+  - `Event → Ticket`
+- **One-to-One:**
+  - `Ticket ↔ User`
+
+---
+
+## 🔄 Business Flow
+
+Brief Business Logic Flow
+Event Creation: Admin creates event → recorded in events table.
+Ticket Purchase: User selects event → creates a new row in tickets with user_id, event_id, price, and purchased_at.
+Event Status:
+Before an update, the BeforeUpdate hook checks the current date.
+If it has passed end_date → status becomes completed.
+If it has passed start_date but not end_date → status is ongoing.
+Ticket Status:
+Default active.
+Can be changed to used or cancelled.
+
+---
+
+## 📬 API Endpoints
+
+> **Full documentation** in  [📑 Postman LMS API Docs](https://documenter.getpostman.com/view/39611346/2sB2j4grLy)
 
 ## Authentication
 
@@ -81,51 +139,19 @@ Authorization: Bearer <token>
 | GET    | \`/api/reports/summary\`   | Get overall sales summary      |
 | GET    | \`/api/reports/event/:id\` | Get sales report for one event |
 
-## Postman Collection
+   ```
+4. **Access the API** at `http://localhost:8080`
 
-Import \`postman_collection.json\` and use the following environment values:
-
-* \`base_url\`: \`http://localhost:8080/api\`
-* \`token\`: \`<JWT token from login>\`
-
-### Example: Purchase Ticket
-
-1. **Request**
-
-   \`\`\`
-   POST {{base_url}}/tickets
-   Authorization: Bearer {{token}}
-   Content-Type: application/json
-
-   {
-     "event_id": 1
-   }
+## ✅ Run the server**
+   \`\`\`bash
+   go run main.go
    \`\`\`
 
-2. **Response**
 
-   \`\`\`json
-   HTTP/1.1 201 Created
-   {
-     "message": "Ticket purchased successfully",
-     "ticket": {
-       "id": 10,
-       "event_id": 1,
-       "user_id": 2,
-       "status": "active",
-       "price": 50.0,
-       "purchased_at": "2025-05-02T10:00:00Z",
-       "created_at": "2025-05-02T10:00:00Z",
-       "updated_at": "2025-05-02T10:00:00Z"
-     }
-   }
-   \`\`\`
+## 🔒 Security
 
-## Testing
+- Passwords are hashed with **bcrypt**.
+- **JWT** tokens are used for authentication.
+- Role-based access control enforced on all endpoints.
+.
 
-Use the provided Postman collection to test all endpoints. Ensure the \`token\` variable is set after login.
-
----
-
-*Generated on May 2, 2025*
-`

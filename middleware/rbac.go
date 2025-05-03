@@ -1,11 +1,9 @@
-// middleware/rbac.go
 package middleware
 
 import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-
 )
 
 func Authorize(roles ...string) gin.HandlerFunc {

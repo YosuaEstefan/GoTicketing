@@ -1,4 +1,3 @@
-// service/report_service.go
 package service
 
 import "ticket/repository"

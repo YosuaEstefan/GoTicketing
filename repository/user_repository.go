@@ -1,11 +1,9 @@
-// repository/user_repository.go
 package repository
 
 import (
 	"ticket/models"
 
 	"gorm.io/gorm"
-
 )
 
 type UserRepository interface {

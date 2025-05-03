@@ -1,4 +1,3 @@
-// controllers/auth_controller.go
 package controllers
 
 import (
@@ -7,7 +6,6 @@ import (
 	"ticket/service"
 
 	"github.com/gin-gonic/gin"
-
 )
 
 type AuthController interface {

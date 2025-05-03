@@ -1,4 +1,3 @@
-// controller/ticket_controller.go
 package controllers
 
 import (

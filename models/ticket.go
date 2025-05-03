@@ -1,4 +1,3 @@
-// models/ticket.go
 package models
 
 import (

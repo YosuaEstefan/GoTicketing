@@ -7,7 +7,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// SetupRouter menginisialisasi semua rute aplikasi dengan base path /api
 func SetupRouter(
 	jwtMiddleware middleware.JWTMiddleware,
 	authController controllers.AuthController,
@@ -20,7 +19,6 @@ func SetupRouter(
 	// Global CORS
 	router.Use(middleware.CORS())
 
-	// Grupkan semuanya di bawah /api
 	api := router.Group("/api")
 	{
 		// — Public routes —
@@ -28,7 +26,6 @@ func SetupRouter(
 		api.POST("/login", authController.Login)
 		api.GET("/events", eventController.GetAllEvents)
 
-		// — Protected routes —
 		protected := api.Group("")
 		protected.Use(jwtMiddleware.JWTAuth())
 

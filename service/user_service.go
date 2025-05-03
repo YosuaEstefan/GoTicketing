@@ -1,4 +1,3 @@
-// service/user_service.go
 package service
 
 import (
@@ -8,7 +7,6 @@ import (
 	"ticket/utils"
 
 	"golang.org/x/crypto/bcrypt"
-
 )
 
 type UserService interface {

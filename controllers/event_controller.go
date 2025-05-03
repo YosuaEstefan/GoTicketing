@@ -1,4 +1,3 @@
-// controllers/event_controller.go
 package controllers
 
 import (
@@ -8,7 +7,6 @@ import (
 	"ticket/service"
 
 	"github.com/gin-gonic/gin"
-
 )
 
 type EventController interface {

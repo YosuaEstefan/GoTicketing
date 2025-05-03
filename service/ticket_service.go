@@ -1,4 +1,3 @@
-// service/ticket_service.go
 package service
 
 import (
@@ -6,7 +5,6 @@ import (
 	"ticket/models"
 	"ticket/repository"
 	"time"
-
 )
 
 type TicketService interface {

@@ -1,4 +1,3 @@
-// middleware/jwt_auth.go (yang diperbarui)
 package middleware
 
 import (
@@ -7,7 +6,6 @@ import (
 	"ticket/utils"
 
 	"github.com/gin-gonic/gin"
-
 )
 
 // JWTMiddleware interface mendefinisikan fungsi untuk autentikasi JWT

@@ -1,4 +1,3 @@
-// service/jwt_service.go
 package service
 
 import (
@@ -8,7 +7,6 @@ import (
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
-
 )
 
 type JWTService interface {

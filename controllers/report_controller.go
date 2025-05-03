@@ -1,4 +1,3 @@
-// controllers/report_controller.go
 package controllers
 
 import (

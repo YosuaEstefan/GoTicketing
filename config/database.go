@@ -1,4 +1,3 @@
-// config/database.go
 package config
 
 import (
@@ -8,7 +7,6 @@ import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
-
 )
 
 func InitDB(cfg *Config) (*gorm.DB, error) {
@@ -27,7 +25,6 @@ func InitDB(cfg *Config) (*gorm.DB, error) {
 }
 
 func RunMigrations(db *gorm.DB) {
-	// Auto migrate the schema
 	db.AutoMigrate(
 		&models.User{},
 		&models.Event{},

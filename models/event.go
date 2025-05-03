@@ -1,4 +1,3 @@
-// models/event.go
 package models
 
 import (
