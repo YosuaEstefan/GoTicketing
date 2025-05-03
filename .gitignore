@@ -1,0 +1,53 @@
+#  Biner untuk program dan plugin
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Uji biner, dibuat dengan 'go test -c'
+*.test
+
+# Keluaran dari alat cakupan gover
+*.out
+
+# Go Buka file ruang kerja
+go.work
+
+# Direktori yang dihasilkan oleh Go
+# Go mod vendor dir
+vendor/
+
+# File khusus IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Variabel lingkungan
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Unggah direktori
+uploads/
+tmp/
+
+# Membangun hasil
+# Hasil build untuk aplikasi Go
+bin/
+build/
+
+# Volume Docker
+docker-volumes/
+
+# log file
+logs/
+*.log
+
+# file database
+
+*.db
+*.SQLite

@@ -140,7 +140,7 @@ Authorization: Bearer <token>
 | GET    | \`/api/reports/event/:id\` | Get sales report for one event |
 
    ```
-4. **Access the API** at `http://localhost:8080`
+4. **Access the API** at `http://localhost:8080`/`http://localhost:8081`
 
 ## ✅ Run the server**
    \`\`\`bash
